@@ -6,7 +6,7 @@ This project build by React with Vite, Tailwindcss.
 
 Link [gh-pages](https://halimmahmoud.github.io/upskillingtask/)
 
-## To text in your machine
+## To test in your machine
 
 Clone the repo
 
