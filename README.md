@@ -1,50 +1,43 @@
-# React + TypeScript + Vite
+# Upskilling Filteration Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project build by React with Vite, Tailwindcss.
 
-Currently, two official plugins are available:
+## Published to gh-pages
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Link [gh-pages](https://halimmahmoud.github.io/upskillingtask/)
 
-## Expanding the ESLint configuration
+## To text in your machine
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Clone the repo
 
-- Configure the top-level `parserOptions` property like this:
+Install deps
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## API POST call
+
+There is node server file in project to test api post call from different your own server if the given url in task is not working
+
+```tsx
+// Form.tsx
+const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  try {
+    const response = await fetch("http://upskilling-egypt.com:3001/contact", {
+      // if url in the task is failling - try to post to test server
+      // install deps first with : npm i express cors bodyParser & run : node nodeserver.js
+      // comment line 23 and uncomment line 27
+      // const response = await fetch("http://localhost:3000/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await response.json();
+
+    console.log(result);
+  } catch (error) {
+    console.error("error: ", error);
+  }
+};
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Build with responsiveness in mind
